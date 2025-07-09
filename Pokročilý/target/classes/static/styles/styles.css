@@ -1,0 +1,123 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins-ExtraBold.ttf);
+    font-weight: bold;
+}¨
+
+header nav a {
+    text-decoration: none;
+}
+
+.card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.alert {
+    transition: all 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    header nav a {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+body {
+    font: 14px "Poppins";
+    background: #f9f9f9;
+    color: #414042;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 100px 0px 0px 0px;
+    min-height: 100vh;
+    min-width: 960px;
+}
+
+footer {
+    box-sizing: border-box;
+    text-align: center;
+    height: 100px;
+    color: white;
+    background: #414042;
+    padding: 50px 0 0 0;
+    clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%);
+}
+
+.centrovany {
+    text-align: center;
+}
+
+#centrovac {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+.kontakt-tlacitko {
+    background: #EF6534;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.kontakt-tlacitko:hover,
+.reference-tlacitko:hover,
+.clanky-tlacitko:hover {
+    color: white;
+    filter: brightness(115%) contrast(85%);
+    border: 0;
+}
+
+.vlevo {
+    float: left;
+}
+
+.cistic {
+    clear: both;
+}
+
+a:hover {
+    color: currentColor;
+}
+
+.clanky-tlacitko {
+    background: #00386B;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    margin: 15px 0;
+    border-radius: 20px;
+    border: 0;
+}
+
+#clanky li h2 a {
+    text-decoration: none;
+    color: #00386B;
+}
+
+/*
+Flash messages
+*/
+.flash-message {
+    text-align: center;
+    color: white;
+    width: 960px;
+    margin: 0 auto;
+    margin-top: 14px;
+}
+
+.message-success {
+    background: #70b73a;
+}
+
+.message-error {
+    background: #d41400;
+}

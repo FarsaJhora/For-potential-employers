@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="cs" th:replace="~{base :: content}">
+<main>
+    <h2>Administrátorský přehled</h2>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <canvas id="insuranceTypeChart"></canvas>
+        </div>
+        <div class="col-md-6 mb-4">
+            <canvas id="eventsPerMonthChart"></canvas>
+        </div>
+        <div class="col-md-6 mb-4">
+            <canvas id="totalAmountChart"></canvas>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    
+    // Typy pojištění
+    const insuranceTypeCtx = document.getElementById('insuranceTypeChart').getContext('2d');
+    new Chart(insuranceTypeCtx, {
+        type: 'pie',
+        data: {
+            labels: /*[[${insuranceTypeLabels}]]*/ ['Byt', 'Auto', 'Cestovní'],
+            datasets: [{
+                label: 'Počet pojištění',
+                data: /*[[${insuranceTypeCounts}]]*/ [10, 5, 7],
+                backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56'],
+            }]
+        }
+    });
+
+    // Události za měsíc
+    const eventsPerMonthCtx = document.getElementById('eventsPerMonthChart').getContext('2d');
+    new Chart(eventsPerMonthCtx, {
+        type: 'bar',
+        data: {
+            labels: /*[[${eventMonths}]]*/ ['Leden', 'Únor', 'Březen'],
+            datasets: [{
+                label: 'Počet událostí',
+                data: /*[[${eventCounts}]]*/ [3, 7, 2],
+                backgroundColor: '#4bc0c0'
+            }]
+        }
+    });
+
+    // Součty částek
+    const totalAmountCtx = document.getElementById('totalAmountChart').getContext('2d');
+    new Chart(totalAmountCtx, {
+        type: 'line',
+        data: {
+            labels: /*[[${amountMonths}]]*/ ['Leden', 'Únor', 'Březen'],
+            datasets: [{
+                label: 'Celková částka (Kč)',
+                data: /*[[${amountSums}]]*/ [12000, 25000, 18000],
+                borderColor: '#9966ff',
+                backgroundColor: '#9966ff22',
+                fill: true
+            }]
+        }
+    });
+</script>
+</html>

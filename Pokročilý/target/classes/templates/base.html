@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Pojištění App</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/main.js}" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<!--
+ * Základní šablona pro všechny stránky aplikace.
+ * Obsahuje hlavičku, navigaci a patičku.
+ -->
+<body>
+    <header class="bg-dark text-white p-3">
+        <div class="container">
+            <h1 class="h3">Pojištění App</h1>
+            <nav>
+                <a class="text-white me-3" th:href="@{/account/home}">Domů</a>
+                <a class="text-white me-3" th:href="@{/user/profile}">Profil</a>
+                <a class="text-white me-3" th:href="@{/insurance}">Moje pojištění</a>
+                <a class="text-white" th:href="@{/account/logout}">Odhlásit</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-4" th:replace="~{::content}"></main>
+
+    <footer class="bg-light text-center p-3 mt-5">
+        <small>&copy; 2025 Evidence Pojištění</small>
+    </footer>
+</body>
+</html>
