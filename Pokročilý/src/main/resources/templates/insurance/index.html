@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="cs" th:replace="~{base :: content}">
+
+<!--
+ * Moje pojištění.
+ * Zobrazí seznam všech pojištění uživatele a umožní jejich správu.
+--->
+ <main>
+    <h2>Moje pojištění</h2>
+
+    <a class="btn btn-success mb-3" th:href="@{/insurance/create}">Vytvořit nové pojištění</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Typ</th>
+                <th>Platnost od</th>
+                <th>Platnost do</th>
+                <th>Akce</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="insurance : ${insurances}">
+                <td th:text="${insurance.name}"></td>
+                <td th:text="${insurance.type}"></td>
+                <td th:text="${insurance.validFrom}"></td>
+                <td th:text="${insurance.validTo}"></td>
+                <td>
+                    <a th:href="@{'/insurance/edit/' + ${insurance.id}}" class="btn btn-sm btn-secondary">Upravit</a>
+                    <a th:href="@{'/insurance/delete/' + ${insurance.id}}" 
+                       class="btn btn-sm btn-danger"
+                       onclick="return confirm('Opravdu chcete toto pojištění smazat?');">Smazat</a>
+                    <a th:href="@{'/insurance/events/' + ${insurance.id}}" class="btn btn-sm btn-info">Události</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${successMessage}" class="alert alert-success mt-3" th:text="${successMessage}"></div>
+</main>
+</html>

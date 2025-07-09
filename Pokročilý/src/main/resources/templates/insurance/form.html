@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="cs" th:replace="~{base :: content}">
+
+<!--
+ * Formulář pro vytvoření nebo úpravu pojištění.
+ * Umožňuje uživateli zadat nebo upravit detaily pojištění.
+-->
+<main>
+    <h2 th:text="${#strings.equals(mode, 'create') ? 'Vytvořit pojištění' : 'Upravit pojištění'}"></h2>
+
+    <form th:action="@{${#strings.equals(mode, 'create') ? '/insurance/create' : '/insurance/edit/' + insurance.id}}" 
+          th:object="${insurance}" method="post">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Název</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">Typ</label>
+            <input type="text" id="type" th:field="*{type}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="validFrom" class="form-label">Platnost od</label>
+            <input type="date" id="validFrom" th:field="*{validFrom}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="validTo" class="form-label">Platnost do</label>
+            <input type="date" id="validTo" th:field="*{validTo}" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Uložit</button>
+        <a class="btn btn-secondary" th:href="@{/insurance}">Zrušit</a>
+    </form>
+
+    <div th:if="${successMessage}" class="alert alert-success mt-3" th:text="${successMessage}"></div>
+</main>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chyba</title>
+</head>
+
+<!-- 
+ * Obecná chybová stránka pro aplikaci.
+ * Zobrazí chybovou zprávu a odkaz na přihlášení.
+-->
+<body>
+<h1>Došlo k chybě</h1>
+<p th:text="${errorMessage}"></p>
+<a th:href="@{/account/login}">Zpět na přihlášení</a>
+</body>
+</html>
