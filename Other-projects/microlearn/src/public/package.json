@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "scripts": {
+    "scrape:vue": "node scripts/scrape-vue-docs.mjs",
+    "build:data": "npm run scrape:vue"
+  }
+}
